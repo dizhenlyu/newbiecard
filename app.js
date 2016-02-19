@@ -5,6 +5,7 @@ var Card = require('./models/Card');
 
 var app = express();
 app.set('view engine', 'ejs');
+app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function(req, res){
 	res.render('index');
@@ -113,5 +114,5 @@ app.get('/getCardDetail', function(req, res){
 
 app.listen(5000, function(){
 	console.log('Newbie Card Demo Ver.');
-	console.log('Listening to 3000');
+	console.log('Listening to 5000');
 });
