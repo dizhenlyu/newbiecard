@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bank</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class="container col-md-6">
+		<h1>Bank</h1>
+		<form role="form" action="/getCards" method="get">
+			<div class="form-group">
+				<label for="bank_id">Bank: </label>
+				<select name="bank_id" class="form-control">
+					<% banks.forEach(function(bank){ %>
+						<option value="<%= bank.id %>"><%= bank.bank_name %></option>
+					<% }); %>
+				</select>
+			</div>
+			<div class="form-group"><input class="btn btn-primary btn-block" type="submit" value="Go"></div>
+		</form>
+		<div>
+			<form role="form" action="/addBanks" method="get">
+				<div class="form-group">
+					<label for="add_bank_name">Or Add A Bank: </label>
+					<input type="text" name="add_bank_name" class="form-control">
+				</div>
+				
+				<div class="form-group"><input class="btn btn-primary btn-block" type="submit" value="Add New"></div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

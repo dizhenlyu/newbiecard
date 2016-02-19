@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Results</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="col-md-6">
+	<h1>Result:</h1>
+	
+<% if (cards.length > 0){ %>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Offer</th>
+				<th>Design</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% cards.forEach(function(card){ %>
+			<tr>
+				<td><%= card.card_name %></td>
+				<td><%= card.card_offer %></td>
+				<td><img width="200px;" src="<%= card.card_design %>"></td>
+				<td><a href="<%= "/getCardDetail?card_id=" + card.card_id %>">Edit</td>
+			</tr>
+			<% }); %>
+		</tbody>
+	</table>
+
+<% }else{ %>
+	<div>Try to add some cards</div>
+<% } %>
+</div>
+<div class="col-md-6">
+	<h1>Add A Card</h1>
+	<form role="form" action="/addCards" method="get">
+		<div class="form-group">
+			<label for="add_card_name">Card Name: </label>
+			<input type="text" name="add_card_name" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="add_card_offer">Card Offer: </label>
+			<input type="text" name="add_card_offer" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="add_card_design">Card Design URL: </label>
+			<input type="text" name="add_card_design" class="form-control">
+		</div>
+		<input type="hidden" name="bank_id" value="<%= bank_id %>">
+		<div class="form-group"><input class="btn btn-primary btn-block" type="submit" value="Add New Card"></div>
+	</form>
+</div>
+
+</body>
+</html>
