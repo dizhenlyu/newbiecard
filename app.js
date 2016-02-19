@@ -1,6 +1,5 @@
 var express = require('express');
 var ejs = require('ejs');
-var Dvd = require('./models/Dvd');
 var Bank = require('./models/Bank');
 var Card = require('./models/Card');
 
@@ -112,7 +111,7 @@ app.get('/getCardDetail', function(req, res){
 	})
 });
 
-app.listen(3000, function(){
+app.listen(5000, function(){
 	console.log('Newbie Card Demo Ver.');
 	console.log('Listening to 3000');
 });
