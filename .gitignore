@@ -1,0 +1,5 @@
+crawler/crawler/*.pyc
+
+.DS_Store
+crawler/crawler/.DS_Store
+crawler/.DS_Store
