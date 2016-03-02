@@ -13,10 +13,10 @@ class Spider(scrapy.Spider):
 
 	store_title_path = '//div[@style="width:100%;text-align:center;"]/h1/span[@class="font2 s22"]/text()'
 	front_page_store_path = '//div[@class="fl c"]/table/tr'
+	stores = {}
 	
 	all_stores = []
 	def parse(self, response):
-		stores = {}
 		for sel in response.xpath(self.front_page_store_path):
 			rate = ''
 			name = ''
@@ -27,14 +27,14 @@ class Spider(scrapy.Spider):
 					text = td.xpath('text()').extract()
 					if text == []:
 						rate = str(td.xpath('a/text()').extract()[0])
-						stores[name] = {'name': name, 'url': url, 'rate': rate}
+						self.stores[name] = {'name': name, 'url': url, 'best_rate': rate}
 				elif 'l tl' == class_name:
 					href = str(td.xpath('a/@href').extract()[0])
 					url = response.urljoin(href)
 					name = str(td.xpath('a/text()').extract()[0])
 
 
-		for store in stores.values():
+		for store in self.stores.values():
 			yield scrapy.Request(store['url'], callback = self.parse_each_website)
 		
 
@@ -69,5 +69,6 @@ class Spider(scrapy.Spider):
 		# print store_detail['name']
 		# print store_detail['websites']
 		# self.all_stores.append(store_detail)
+		store_detail['best_rate'] = self.stores[store_detail['name']]['best_rate']
 		yield store_detail
 
