@@ -1,5 +1,4 @@
 #! /usr/bin/env python
-# class = 'l tl' // i.e. ebay
 
 import scrapy
 import json
@@ -14,11 +13,11 @@ class Spider(scrapy.Spider):
 
 	store_title_path = '//div[@style="width:100%;text-align:center;"]/h1/span[@class="font2 s22"]/text()'
 	front_page_store_path = '//div[@class="fl c"]/table/tr'
+	
+	all_stores = []
 	def parse(self, response):
-		# item = Item()
 		stores = {}
-		for sel in response.xpath(front_page_store_path):
-			# store = Store()
+		for sel in response.xpath(self.front_page_store_path):
 			rate = ''
 			name = ''
 			url = ''
@@ -37,6 +36,7 @@ class Spider(scrapy.Spider):
 
 		for store in stores.values():
 			yield scrapy.Request(store['url'], callback = self.parse_each_website)
+		
 
 
 	def parse_each_website(self, response):
@@ -44,8 +44,6 @@ class Spider(scrapy.Spider):
 		store_detail['name'] = str(response.xpath(self.store_title_path).extract()[0])
 		store_detail['websites'] = []
 		for sel in response.xpath('//td[@class="sp half"]/div[@class="half fl"]/table/tr'):
-			# item = Item()
-			# item['name']
 			url = ''
 			name = ''
 			rate = ''
@@ -68,13 +66,8 @@ class Spider(scrapy.Spider):
 						rate = str(rate[0])
 					website.append({'name': name, 'url':url, 'rate': rate})
 			store_detail['websites'].extend(website)
-		print store_detail['name']
-		print store_detail['websites']
+		# print store_detail['name']
+		# print store_detail['websites']
+		# self.all_stores.append(store_detail)
 		yield store_detail
 
-
-
-	# def parse(self, response):
-	# 	filename = response.url.split("/")[-2] + '.html'
-	# 	with open(filename, 'wb') as f:
-	# 		f.write(response.body)
