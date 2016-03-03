@@ -1,14 +1,21 @@
 var express = require('express');
 var ejs = require('ejs');
+var path = require('path')
+
 var Bank = require('./models/Bank');
 var Card = require('./models/Card');
 
 var app = express();
 app.set('view engine', 'ejs');
 app.set('port', (process.env.PORT || 5000));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res){
 	res.render('index');
+});
+
+app.get('/signup', function(req, res){	
+	res.render('signup');
 });
 
 // app.get('/dvds', function(req, res){

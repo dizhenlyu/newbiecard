@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>NewbieCard SignUp</title>
+
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+
+		<link href="/css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
+    	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+
+	</head>
+	<body>
+		<div class="container">
+
+			<div class="fs-form-wrap" id="fs-form-wrap">
+				<div class="fs-title">
+					<h1>NewbieCard SignUp</h1>
+				</div>
+				<form id="myform" class="fs-form fs-form-full" autocomplete="off">
+					<ol class="fs-fields">
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q1">What's your name?</label>
+							<input class="fs-anim-lower" id="q1" name="q1" type="text" placeholder="Dean Xiao" required/>
+						</li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't let others know, we promise...">What's your password?</label>
+							<input class="fs-anim-lower" id="q2" name="q2" type="password" placeholder="*******" required/>
+						</li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q3" data-info="We won't send you spam, we promise...">What's your email address?</label>
+							<input class="fs-anim-lower" id="q3" name="q3" type="email" placeholder="dxiao@usc.edu" required/>
+						</li>
+
+						<li data-input-trigger>
+							<label class="fs-field-label fs-anim-upper" for="q4" data-info="This will help us know what kind of service you need">What's your rewards priority?</label>
+							<div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
+								<span><input id="q4b" name="q4" type="radio" value="conversion"/><label for="q4b" class="radio-conversion">Chase UR</label></span>
+								<span><input id="q4c" name="q4" type="radio" value="social"/><label for="q4c" class="radio-social">Cashback</label></span>
+								<span><input id="q4a" name="q4" type="radio" value="mobile"/><label for="q4a" class="radio-mobile">Citi Thankyou Points</label></span>
+							</div>
+						</li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" data-info="We'll make sure to use it all over">Select the credit cards you have.</label>
+							<!-- <select class="cs-select cs-skin-boxes fs-anim-lower" >
+								<option value="" disabled selected>Pick a color</option>
+								<option value="#588c75" data-class="color-588c75">#588c75</option>
+								<option value="#b0c47f" data-class="color-b0c47f">#b0c47f</option>
+								<option value="#f3e395" data-class="color-f3e395">#f3e395</option>
+								<option value="#f3ae73" data-class="color-f3ae73">#f3ae73</option>
+								<option value="#da645a" data-class="color-da645a">#da645a</option>
+								<option value="#79a38f" data-class="color-79a38f">#79a38f</option>
+								<option value="#c1d099" data-class="color-c1d099">#c1d099</option>
+								<option value="#f5eaaa" data-class="color-f5eaaa">#f5eaaa</option>
+								<option value="#f5be8f" data-class="color-f5be8f">#f5be8f</option>
+								<option value="#e1837b" data-class="color-e1837b">#e1837b</option>
+								<option value="#9bbaab" data-class="color-9bbaab">#9bbaab</option>
+								<option value="#d1dcb2" data-class="color-d1dcb2">#d1dcb2</option>
+								<option value="#f9eec0" data-class="color-f9eec0">#f9eec0</option>
+								<option value="#f7cda9" data-class="color-f7cda9">#f7cda9</option>
+								<option value="#e8a19b" data-class="color-e8a19b">#e8a19b</option>
+								<option value="#bdd1c8" data-class="color-bdd1c8">#bdd1c8</option>
+								<option value="#e1e7cd" data-class="color-e1e7cd">#e1e7cd</option>
+								<option value="#faf4d4" data-class="color-faf4d4">#faf4d4</option>
+								<option value="#fbdfc9" data-class="color-fbdfc9">#fbdfc9</option>
+								<option value="#f1c1bd" data-class="color-f1c1bd">#f1c1bd</option>
+							</select> -->
+							<select id='optgroup' class="fs-anim-lower" name="optgroup[]" multiple='multiple'>
+							  <optgroup label='Chase'>
+							    <option value='1'>Freedom</option>
+							    <option value='2'>Sapphire</option>
+							    <option value='3'>Slate</option>
+							  </optgroup>
+							  <optgroup label='Citi'>
+							    <option value='4'>Forward</option>
+							    <option value='5'>Double Cash</option>
+							  </optgroup>
+							</select>
+						</li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q5">Describe what feature you expect from this app:</label>
+							<textarea class="fs-anim-lower" id="q5" name="q5" placeholder="Describe here"></textarea>
+						</li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q6">What's your budget of spending per month?</label>
+							<input class="fs-mark fs-anim-lower" id="q6" name="q6" type="number" placeholder="1000" step="100" min="100"/>
+						</li>
+					</ol><!-- /fs-fields -->
+					<button class="fs-submit" type="submit">Submit</button>
+				</form><!-- /fs-form -->
+			</div><!-- /fs-form-wrap -->
+
+		</div><!-- /container -->
+		<script src="js/jquery.multi-select.js" type="text/javascript"></script>
+
+		<script src="js/modernizr.custom.js"></script>
+		<script src="js/classie.js"></script>
+		<script src="js/fullscreenForm.js"></script>
+		<script>
+
+			(function() {
+
+				var formWrap = document.getElementById( 'fs-form-wrap' );
+
+				[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {	
+					new SelectFx( el, {
+						stickyPlaceholder: false,
+						onChange: function(val){
+							document.querySelector('span.cs-placeholder').style.backgroundColor = val;
+						}
+					});
+				} );
+
+				new FForm( formWrap, {
+					onReview : function() {
+						classie.add( document.body, 'overview' ); // for demo purposes only
+					}
+				} );
+			})();
+									$('#optgroup').multiSelect({ selectableOptgroup: true });
+
+		</script>
+	</body>
+</html>
