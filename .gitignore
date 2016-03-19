@@ -1,4 +1,5 @@
 crawler/crawler/*.pyc
+crawler/crawler/spiders/*.pyc
 
 .DS_Store
 crawler/crawler/.DS_Store
