@@ -11,6 +11,8 @@ class Spider(scrapy.Spider):
 		"http://www.cashbackmonitor.com/",
 	]
 
+	banks = ['Amex', 'BarclayCard', 'Chase', 'Citi', 'Discover', 'Wells Fargo']
+
 	store_title_path = '//div[@style="width:100%;text-align:center;"]/h1/span[@class="font2 s22"]/text()'
 	front_page_store_path = '//div[@class="fl c"]/table/tr'
 	stores = {}
@@ -42,12 +44,12 @@ class Spider(scrapy.Spider):
 	def parse_each_website(self, response):
 		store_detail = {}
 		store_detail['name'] = str(response.xpath(self.store_title_path).extract()[0])
-		store_detail['websites'] = []
+		store_detail['bank_websites'] = []
 		for sel in response.xpath('//td[@class="sp half"]/div[@class="half fl"]/table/tr'):
 			url = ''
 			name = ''
 			rate = ''
-			website = []
+			bank_website = []
 			for td in sel.xpath('td'):
 				class_name = str(td.xpath('@class').extract()[0])
 				if 'l lo' == class_name:
@@ -64,8 +66,11 @@ class Spider(scrapy.Spider):
 						rate = rate.replace("\t", '')
 					else:
 						rate = str(rate[0])
-					website.append({'name': name, 'url':url, 'rate': rate})
-			store_detail['websites'].extend(website)
+
+					for bank in self.banks:
+						if bank in name:
+							bank_website.append({'name': name, 'url':url, 'rate': rate})
+			store_detail['bank_websites'].extend(bank_website)
 		# print store_detail['name']
 		# print store_detail['websites']
 		# self.all_stores.append(store_detail)
