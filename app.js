@@ -11,13 +11,15 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res){
+	res.render('deals');
+});
+app.get('/demo', function(req, res){
 	res.render('index');
 });
 
 app.get('/signup', function(req, res){	
 	res.render('signup');
 });
-
 // app.get('/dvds', function(req, res){
 // 	Dvd.findAll({
 // 		where: {

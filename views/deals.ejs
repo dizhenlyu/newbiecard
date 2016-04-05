@@ -1,36 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="dealsApp">
 <head>
-	<title>Bank</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">  
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <title>Newbie Card Deals</title>
+    <base href="/">
+    <link rel="stylesheet" href="css/style.css"/>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/smart-table.min.js"></script>
+
+    <script src="js/controllers/deals.controller.js"></script>
 </head>
 <body>
-	<div class="container col-md-6">
-		<h1>Bank</h1>
-		<form role="form" action="/getCards" method="get">
-			<div class="form-group">
-				<label for="bank_id">Bank: </label>
-				<select name="bank_id" class="form-control">
-					<% banks.forEach(function(bank){ %>
-						<option value="<%= bank.id %>"><%= bank.bank_name %></option>
-					<% }); %>
-				</select>
-			</div>
-			<div class="form-group"><input class="btn btn-primary btn-block" type="submit" value="Go"></div>
-		</form>
-		<div>
-			<form role="form" action="/addBanks" method="get">
-				<div class="form-group">
-					<label for="add_bank_name">Or Add A Bank: </label>
-					<input type="text" name="add_bank_name" class="form-control">
-				</div>
-				
-				<div class="form-group"><input class="btn btn-primary btn-block" type="submit" value="Add New"></div>
-			</form>
-		</div>
-	</div>
+<div class="mainContainer">
+    <div class="panel panel-default subContainer" ng-controller="dealsCtrl as deals">
+
+        <div class="body">
+            <h2><span>NewbieCard Deals</span><span class="pull-right"><a href="/signup">Log In /Sign Up</a></span></h2>
+        </div>
+        <div class="resultPage">
+            <div class="panel-body">
+                <table st-table="deals.result" st-safe-src="deals.data" class="table table-striped">
+                    <thead>
+                    <tr>
+                    <th colspan="12" >
+                    <input st-search="" placeholder="Search for Deal or Portal Name" class="form-control" type="text"/>
+                    </th>
+                    </tr>
+                    <tr>
+                        <th st-sort="name">Name</th>
+                        <!--<th st-sort="best_rate">Best</th>-->
+                        <th colspan="8">Portals</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="row in deals.result">
+                        <td>{{row.name}}</td>
+                        <!--<td>{{row.best_rate}}</td>-->
+                        <td ng-repeat="portal in row.bank_websites">
+                            <a href="{{portal.url}}">{{portal.name}}: {{portal.rate}}</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
