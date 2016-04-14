@@ -1,9 +1,9 @@
 var Sequelize = require('sequelize');
 // var Bank = require(__dirname + '/Bank');
 
-var sequelize = new Sequelize('newbiecard_db', 'newbiecard_user','fighton123', {
+var sequelize = new Sequelize('newbiecard_db', 'newbiecard_user','ncadmin123', {
 	dialect: 'mysql',
-	host: 'db.newbiecard.com'
+	host: 'newbiecard-db.cwvr62aaym9p.us-west-2.rds.amazonaws.com'
 });
 
 // var Bank = sequelize.import(__dirname + "/Bank");
