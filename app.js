@@ -62,6 +62,7 @@ app.get('/getCards', function(req, res){
 				like: '%' + req.query.bank_id + '%'
 			},
 			// 'banks.bank_id': req.query.bank_id
+			
 		}
 	}).then(function(results){
 		res.render('cards', {
